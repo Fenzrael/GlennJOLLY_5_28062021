@@ -1,0 +1,21 @@
+{
+  "name": "glennjolly_6_28062021",
+  "version": "1.0.0",
+  "description": "Projet_6_Openclassroom",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/style.scss:./css/style.css --style compressed",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fenzrael/GlennJOLLY_6_28062021.git"
+  },
+  "author": "GlennJOLLY",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "bugs": {
+    "url": "https://github.com/Fenzrael/GlennJOLLY_6_28062021/issues"
+  },
+  "homepage": "https://github.com/Fenzrael/GlennJOLLY_6_28062021#readme"
+}
