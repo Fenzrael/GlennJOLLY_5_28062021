@@ -12,125 +12,136 @@
     <title>Fisheye</title>
   </head>
   <body>
-    <header>
-      <a href="">Passer au contenu</a>
-      <img src="./img/logoEntreprise/fisheye.png" alt="" />
-      <nav>
-        <ul>
-          <li>#Portrait</li>
-          <li>#Art</li>
-          <li>#Fashion</li>
-          <li>#Architecture</li>
-          <li>#Travel</li>
-          <li>#Sports</li>
-          <li>#Animals</li>
-          <li>#Events</li>
+    <header class="header">
+      <a class="header__link" href="">Passer au contenu</a>
+      <img
+        class="header__image"
+        src="./img/logoEntreprise/fisheye.png"
+        alt="logo"
+      />
+      <nav class="header__navigation navigation">
+        <ul class="navigation__tree">
+          <li class="navigation__filters"><span>#Portrait</span></li>
+          <li class="navigation__filters"><span>#Art</span></li>
+          <li class="navigation__filters"><span>#Fashion</span></li>
+          <li class="navigation__filters"><span>#Architecture</span></li>
+          <li class="navigation__filters"><span>#Travel</span></li>
+          <li class="navigation__filters"><span>#Sports</span></li>
+          <li class="navigation__filters"><span>#Animals</span></li>
+          <li class="navigation__filters"><span>#Events</span></li>
         </ul>
       </nav>
-      <h1>Nos Photographes</h1>
+      <h1 class="header__title">Nos Photographes</h1>
     </header>
 
-    <section>
-      <article>
-        <a href="">
-          <img src="img/Mimi/Portrait_Nora.jpg" alt="mimi" />
-          <h2>Mimi Keel</h2>
-        </a>
-        <div>
-          <p>London, UK</p>
-          <p>Voir le beau dans le quotidien</p>
-          <p>400€/jour</p>
-        </div>
-        <div>
-          <span>#portrait</span>
-          <span>#events</span>
-          <span>#travel</span>
-          <span>#animals</span>
-        </div>
-      </article>
+    <main>
+      <section class="photograph">
+        <article class="photograph__profile profile">
+          <a class="profile__link link" href="">
+            <img src="img/Mimi/Portrait_Nora.jpg" alt="mimi" />
+            <h2>Mimi Keel</h2>
+          </a>
+          <div class="profile__describe describe">
+            <p class="describe__location">London, UK</p>
+            <p class="describe__quote">Voir le beau dans le quotidien</p>
+            <p class="describe__price">400€/jour</p>
+          </div>
+          <div class="profile__filters filters">
+            <span class="filters__">#portrait</span>
+            <span class="filters__">#events</span>
+            <span class="filters__">#travel</span>
+            <span class="filters__">#animals</span>
+          </div>
+        </article>
 
-      <article>
-        <a href="">
-          <img src="img/ellieRose/Architecture_Horseshoe.jpg" alt="ellie" />
-          <h2>Ellie-Rose Wilkens</h2>
-        </a>
-        <div>
-          <p>Paris, France</p>
-          <p>Travaille sur des compositions complexes</p>
-          <p>250€/jour</p>
-        </div>
-        <div>
-          <span>#sports</span>
-          <span>#architecture</span>
-        </div>
-      </article>
+        <article class="photograph__profile profile">
+          <a class="profile__link link" href="">
+            <img src="img/ellieRose/Architecture_Horseshoe.jpg" alt="ellie" />
+            <h2>Ellie-Rose Wilkens</h2>
+          </a>
+          <div class="profile__describe describe">
+            <p class="describe__location">Paris, France</p>
+            <p class="describe__quote">
+              Travaille sur des compositions complexes
+            </p>
+            <p class="describe__price">250€/jour</p>
+          </div>
+          <div class="profile__filters filters">
+            <span class="filters__">#sports</span>
+            <span class="filters__">#architecture</span>
+          </div>
+        </article>
 
-      <article>
-        <a href="">
-          <img src="img/Tracy/Fashion_Urban_Jungle.jpg" alt="tracy" />
-          <h2>Tracy Galindo</h2>
-        </a>
-        <div>
-          <p>Montreal, Canada</p>
-          <p>Photographe freelance</p>
-          <p>500€/jour</p>
-        </div>
-        <div>
-          <span>#art</span>
-          <span>#fashion</span>
-          <span>#events</span>
-        </div>
-      </article>
+        <article class="photograph__profile profile">
+          <a class="profile__link link" href="">
+            <img src="img/Tracy/Fashion_Urban_Jungle.jpg" alt="tracy" />
+            <h2>Tracy Galindo</h2>
+          </a>
+          <div class="profile__describe describe">
+            <p class="describe__location">Montreal, Canada</p>
+            <p class="describe__quote">Photographe freelance</p>
+            <p class="describe__price">500€/jour</p>
+          </div>
+          <div class="profile__filters filters">
+            <span class="filters__">#art</span>
+            <span class="filters__">#fashion</span>
+            <span class="filters__">#events</span>
+          </div>
+        </article>
 
-      <article>
-        <a href="">
-          <img src="img/Nabeel/Travel_Outdoor_Baths.jpg" alt="nabeel" />
-          <h2>Nabeel Bradford</h2>
-        </a>
-        <div>
-          <p>Mexico City, Mexico</p>
-          <p>Je vais toujours de l'avant</p>
-          <p>350€/jour</p>
-        </div>
-        <div>
-          <span>#travel</span>
-          <span>#portraits</span>
-        </div>
-      </article>
+        <article class="photograph__profile profile">
+          <a class="profile__link link" href="">
+            <img src="img/Nabeel/Travel_Outdoor_Baths.jpg" alt="nabeel" />
+            <h2>Nabeel Bradford</h2>
+          </a>
+          <div class="profile__describe describe">
+            <p class="describe__location">Mexico City, Mexico</p>
+            <p class="describe__quote">Je vais toujours de l'avant</p>
+            <p class="describe__price">350€/jour</p>
+          </div>
+          <div class="profile__filters filters">
+            <span>#travel</span>
+            <span>#portraits</span>
+          </div>
+        </article>
 
-      <article>
-        <a href="">
-          <img src="img/Rhode/Fashion_Melody_Red_on_Stripes.jpg" alt="rhode" />
-          <h2>Rhode Dubois</h2>
-        </a>
-        <div>
-          <p>Barcelona, Spain</p>
-          <p>Créatrice de souvenirs</p>
-          <p>375€/jour</p>
-        </div>
-        <div>
-          <span>#sports</span>
-          <span>#fashion</span>
-          <span>#events</span>
-          <span>#animals</span>
-        </div>
-      </article>
+        <article class="photograph__profile profile">
+          <a class="profile__link link" href="">
+            <img
+              src="img/Rhode/Fashion_Melody_Red_on_Stripes.jpg"
+              alt="rhode"
+            />
+            <h2>Rhode Dubois</h2>
+          </a>
+          <div class="profile__describe describe">
+            <p class="describe__location">Barcelona, Spain</p>
+            <p class="describe__quote">Créatrice de souvenirs</p>
+            <p class="describe__price">375€/jour</p>
+          </div>
+          <div class="profile__filters filters">
+            <span class="filters__">#sports</span>
+            <span class="filters__">#fashion</span>
+            <span class="filters__">#events</span>
+            <span class="filters__">#animals</span>
+          </div>
+        </article>
 
-      <article>
-        <a href="">
-          <img src="img/Marcel/Travel_Tower.jpg" alt="marcel" />
-          <h2>Marcel Nikolic</h2>
-        </a>
-        <div>
-          <p>Berlin, Germany</p>
-          <p>Toujours à la recherche de LA photo</p>
-          <p>300€/jour</p>
-        </div>
-        <div>
-          <span>#travel</span>
-          <span>#architecture</span>
-        </div>
-      </article>
-    </section>
+        <article class="photograph__profile profile">
+          <a class="profile__link link" href="">
+            <img src="img/Marcel/Travel_Tower.jpg" alt="marcel" />
+            <h2>Marcel Nikolic</h2>
+          </a>
+          <div class="profile__describe describe">
+            <p class="describe__location">Berlin, Germany</p>
+            <p class="describe__quote">Toujours à la recherche de LA photo</p>
+            <p class="describe__price">300€/jour</p>
+          </div>
+          <div class="profile__filters filters">
+            <span class="filters__">#travel</span>
+            <span class="filters__">#architecture</span>
+          </div>
+        </article>
+      </section>
+    </main>
   </body>
 </html>

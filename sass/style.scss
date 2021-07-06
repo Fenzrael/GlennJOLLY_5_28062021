@@ -1,0 +1,71 @@
+//-----------
+// Variables
+//---------
+
+// Color
+$color-primary: #901c1c;
+$color-secondary: #d3573c;
+
+$color-greyLight: #fafafa;
+$color-greyMiddle: #c4c4c4;
+$color-greyDark: #525252;
+$color-orangeSalmon: #db8876;
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  &__link {
+    display: none;
+    position: fixed;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: dark;
+    background-color: $color-orangeSalmon;
+    border: 2px solid $color-orangeSalmon;
+    border-radius: 0.4rem;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    padding: 0.2rem 0.4rem;
+    color: $color-greyDark;
+  }
+  &__image {
+    width: 12.5rem;
+    height: 3.125rem;
+    align-self: center;
+    margin-left: 1rem;
+  }
+}
+
+.navigation {
+  border: 1px solid black;
+  display: flex;
+
+  align-content: center;
+  width: 40rem;
+  &__tree {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #c4c4c4;
+  }
+}
