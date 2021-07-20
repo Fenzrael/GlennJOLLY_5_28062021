@@ -48,24 +48,180 @@ body {
     align-self: center;
     margin-left: 1rem;
   }
+  &__title {
+    color: $color-primary;
+    margin-right: 1rem;
+  }
 }
 
 .navigation {
-  border: 1px solid black;
   display: flex;
-
-  align-content: center;
-  width: 40rem;
-  &__tree {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-  }
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 45rem;
+  padding: 0;
+  margin-top: 2rem;
   &__filters {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 0 0.2rem;
+    height: 1.7rem;
     border: 1px solid #c4c4c4;
+    border-radius: 2rem;
+    color: $color-primary;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}
+.profile {
+  text-align: center;
+  width: 30%;
+}
+.link {
+  overflow: hidden;
+  object-fit: cover;
+  max-width: 12.5rem;
+  max-height: auto;
+
+  &__image {
+    width: 12.5rem;
+    height: 12.5rem;
+    border: 2px solid $color-greyMiddle;
+    border-radius: 50%/50%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  &__title {
+    overflow: hidden;
+    color: $color-secondary;
+  }
+}
+
+.photograph {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  &__profile {
+    margin: 2rem 0;
+  }
+}
+
+.filters {
+  &__profile {
+    text-align: center;
+    padding: 0 0.2rem;
+    height: 1.7rem;
+    border: 1px solid #c4c4c4;
+    border-radius: 2rem;
+    color: $color-primary;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}
+
+.presentation {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 5, 1fr);
+  grid-auto-rows: repeat(auto-fill, 4, 1fr);
+  background-color: $color-greyLight;
+  min-height: 20rem;
+  margin: 1rem 3rem;
+  &__image {
+    grid-row: 1/4;
+    grid-column: 5;
+    margin-top: 3rem;
+    width: 12.5rem;
+    height: 12.5rem;
+    border: 2px solid $color-greyMiddle;
+    border-radius: 50%/50%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  &__pro {
+    grid-row: 1;
+    grid-column: 1/3;
+    color: $color-secondary;
+    font-size: 3rem;
+    margin-left: 3rem;
+  }
+  &__city {
+    grid-column: 1/1;
+    margin-left: 3rem;
+  }
+  &__description {
+    margin-left: 3rem;
+    grid-column: 1/3;
+  }
+  &__filters {
+    margin-left: 3rem;
+    grid-column: 1/3;
+  }
+  &__contact {
+    grid-row: 1/1;
+    grid-column: 3/4;
+    margin-top: 3rem;
+    width: 50%;
+    height: 35%;
+    background-color: $color-primary;
+    border-radius: 10%/20%;
+    color: white;
+  }
+}
+
+.filterNav {
+  margin: 0 3rem;
+}
+
+.label {
+  padding-right: 2rem;
+}
+
+#methods {
+  padding: 0 1rem;
+}
+
+.gallery {
+  display: grid;
+  grid-gap: 0.2rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.photo {
+  width: 22rem;
+  height: 19rem;
+  object-fit: cover;
+  margin-left: 3rem;
+  &__image {
+    width: 22rem;
+    height: 19rem;
+  }
+}
+
+#pro1,
+#pro2,
+#pro3,
+#pro4,
+#pro5,
+#pro6 {
+  margin: 1rem 0 0 3rem;
+}
+
+.legend {
+  position: relative;
+  &__likes {
+    position: absolute;
+    bottom: 0;
+    right: 1.5rem;
+  }
+  &__icon {
+    position: absolute;
+    bottom: 0.15rem;
+    right: 0;
   }
 }
