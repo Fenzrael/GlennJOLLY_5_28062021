@@ -1,3 +1,6 @@
+const likeButton = document.getElementsByClassName("legend__icon");
+const likeCount = document.getElementsByClassName("legend__likes");
+
 const gallery = document.getElementById("gallery");
 const pathToImgDirectory = "./img/";
 const currentPhotographer = {
@@ -14,9 +17,8 @@ const currentPhotographer = {
 // Import données data.json
 let userData = [];
 
-const currentUserMedia = [];
 const userMedia = async () => {
-  await fetch("data.json")
+  await fetch("./data.json")
     .then((res) => res.json())
     .then((data) => (userData = data));
 
@@ -24,6 +26,8 @@ const userMedia = async () => {
 };
 
 // Import media Photographes
+const currentUserMedia = [];
+
 const userDisplay = async () => {
   await userMedia();
 
@@ -38,6 +42,8 @@ const userDisplay = async () => {
   constructMediaHtml();
 };
 
+userDisplay();
+
 function constructMediaHtml() {
   gallery.innerHTML = "";
   currentUserMedia.forEach((media) => {
@@ -46,7 +52,7 @@ function constructMediaHtml() {
     <img
       class="photo__image"
       src="./img/${media.image}" 
-      alt=""
+      alt="${media.title}"
     />
     <figcaption class="legend">
       ${media.title}<span class="legend__likes">${media.likes}</span
@@ -55,7 +61,6 @@ function constructMediaHtml() {
   </figure>`;
   });
 }
-userDisplay();
 
 // Implementation tri
 
@@ -83,3 +88,34 @@ selectFilter.addEventListener("change", function (e) {
 
   constructMediaHtml();
 });
+
+//incrementation like
+
+/* const addCount = () => {
+  likeButton.forEach((item) => {
+    item.addEventListener("click", () => {
+      item.media.likes++;
+    });
+  });
+};
+addCount(); */
+
+/* for (i of likeButton) {
+  i.addEventListener("click", () => {
+    console.log("bonjour");
+  });
+} */
+
+console.log(likeButton);
+
+/* likeButton.forEach(function (elt) {
+  elt.addEventListener("click", () => {
+    console.log("test");
+  });
+}); */
+
+for (let i = 0; i < likeButton.length; i++) {
+  likeButton[i].addEventListener("click", function likeClicked() {
+    console.log("test");
+  });
+}
