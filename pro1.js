@@ -1,9 +1,12 @@
+const params = new URLSearchParams(document.location.search.substring(1));
+
+const photographerId = params.get("photographerId");
 const likeButton = document.getElementsByClassName("legend__icon");
 const likeCount = document.getElementsByClassName("legend__likes");
 
 const gallery = document.getElementById("gallery");
 const pathToImgDirectory = "./img/";
-const currentPhotographer = {
+/* const currentPhotographer = {
   name: "Mimi Keel",
   id: 243,
   city: "London",
@@ -13,7 +16,7 @@ const currentPhotographer = {
   price: 400,
   portrait: "MimiKeel.jpg",
 };
-
+ */
 // Import données data.json
 let userData = [];
 
@@ -32,20 +35,21 @@ const userDisplay = async () => {
   await userMedia();
 
   userData.media.forEach((media) => {
-    if (media.photographerId == currentPhotographer.id) {
+    if (media.photographerId == photographerId) {
       currentUserMedia.push(media);
     }
   });
+  //tri par defaut
   currentUserMedia.sort(function (a, b) {
     return b.likes - a.likes;
   });
   constructMediaHtml();
 };
-
+console.log(currentUserMedia);
 userDisplay();
 
 function constructMediaHtml() {
-  gallery.innerHTML = "";
+  gallery.innerHTML = ""; // rerender(rerendre le contenu (reorganisation donnees))
   currentUserMedia.forEach((media) => {
     gallery.innerHTML += `
     <figure class="gallery__photo photo"> 
@@ -56,7 +60,7 @@ function constructMediaHtml() {
     />
     <figcaption class="legend">
       ${media.title}<span class="legend__likes">${media.likes}</span
-      ><span class="fas fa-heart legend__icon"></span>
+      ><span class="fas fa-heart legend__icon" onclick="incrementLikes(${media.id})"></span>
     </figcaption>
   </figure>`;
   });
@@ -114,8 +118,19 @@ console.log(likeButton);
   });
 }); */
 
-for (let i = 0; i < likeButton.length; i++) {
-  likeButton[i].addEventListener("click", function likeClicked() {
+/* for (let i = 0; i < likeButton.length; i++) {
+  likeButton[i].addEventListener("click", () => {
     console.log("test");
+    alert("nul");
   });
+} */
+
+function incrementLikes(mediaId) {
+  for (let i = 0; i < currentUserMedia.length; i++) {
+    if (currentUserMedia[i].id === mediaId) {
+      currentUserMedia[i].likes++;
+      break;
+    }
+  }
+  constructMediaHtml();
 }
