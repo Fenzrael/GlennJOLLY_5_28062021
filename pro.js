@@ -95,35 +95,7 @@ selectFilter.addEventListener("change", function (e) {
 
 //incrementation like
 
-/* const addCount = () => {
-  likeButton.forEach((item) => {
-    item.addEventListener("click", () => {
-      item.media.likes++;
-    });
-  });
-};
-addCount(); */
-
-/* for (i of likeButton) {
-  i.addEventListener("click", () => {
-    console.log("bonjour");
-  });
-} */
-
 console.log(likeButton);
-
-/* likeButton.forEach(function (elt) {
-  elt.addEventListener("click", () => {
-    console.log("test");
-  });
-}); */
-
-/* for (let i = 0; i < likeButton.length; i++) {
-  likeButton[i].addEventListener("click", () => {
-    console.log("test");
-    alert("nul");
-  });
-} */
 
 function incrementLikes(mediaId) {
   for (let i = 0; i < currentUserMedia.length; i++) {
@@ -134,3 +106,7 @@ function incrementLikes(mediaId) {
   }
   constructMediaHtml();
 }
+
+// incrementation info photographe par javascript
+
+function constructInfoPhotographer() {}
