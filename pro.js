@@ -1,11 +1,17 @@
 const params = new URLSearchParams(document.location.search.substring(1));
 
 const photographerId = params.get("photographerId");
+
 const likeButton = document.getElementsByClassName("legend__icon");
 const likeCount = document.getElementsByClassName("legend__likes");
 
 const gallery = document.getElementById("gallery");
+const presentationPhotographer = document.getElementById("presentation");
+
 const pathToImgDirectory = "./img/";
+
+// Variable pouvant stocker le photographe en cours
+
 /* const currentPhotographer = {
   name: "Mimi Keel",
   id: 243,
@@ -17,6 +23,7 @@ const pathToImgDirectory = "./img/";
   portrait: "MimiKeel.jpg",
 };
  */
+
 // Import données data.json
 let userData = [];
 
@@ -28,8 +35,10 @@ const userMedia = async () => {
   console.log(userData);
 };
 
-// Import media Photographes
+// Import media Photographers
 const currentUserMedia = [];
+// Import photographers details
+const currentUserDetails = [];
 
 const userDisplay = async () => {
   await userMedia();
@@ -43,9 +52,16 @@ const userDisplay = async () => {
   currentUserMedia.sort(function (a, b) {
     return b.likes - a.likes;
   });
+
+  userData.photographers.forEach((photographer) => {
+    if (photographer.id == photographerId) {
+      currentUserDetails.push(photographer);
+    }
+  });
   constructMediaHtml();
+  constructInfoPhotographer();
 };
-console.log(currentUserMedia);
+
 userDisplay();
 
 function constructMediaHtml() {
@@ -95,8 +111,6 @@ selectFilter.addEventListener("change", function (e) {
 
 //incrementation like
 
-console.log(likeButton);
-
 function incrementLikes(mediaId) {
   for (let i = 0; i < currentUserMedia.length; i++) {
     if (currentUserMedia[i].id === mediaId) {
@@ -109,4 +123,23 @@ function incrementLikes(mediaId) {
 
 // incrementation info photographe par javascript
 
-function constructInfoPhotographer() {}
+function constructInfoPhotographer() {
+  currentUserMedia.forEach((photographer) => {
+    presentationPhotographer.innerHTML += `
+    
+  <h1 class="presentation__pro">${photographer.name}</h1>
+  <p class="presentation__city">${photographer.city}, ${photographer.country}</p>
+  <p class="presentation__description">${photographer.tagline}</p>
+  <div class="presentation__filters filters"></div>
+  <button class="presentation__contact">Contactez-moi</button>
+  <img
+    class="presentation__image"
+    src="img/photographersIDPhotos/${photographer.portrait}"
+    alt="${photographer.name}"
+  />
+    `;
+  });
+}
+constructInfoPhotographer();
+// boucle pour implementer les span des filtres de chaque photographes
+/* for (let i = 0; i < currentUserDetails.length; i++) {} */

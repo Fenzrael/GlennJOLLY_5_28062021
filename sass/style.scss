@@ -125,7 +125,7 @@ body {
   }
 }
 
-.presentation {
+#presentation {
   display: grid;
   grid-template-columns: repeat(auto-fill, 5, 1fr);
   grid-auto-rows: repeat(auto-fill, 4, 1fr);
