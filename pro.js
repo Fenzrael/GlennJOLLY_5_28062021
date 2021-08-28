@@ -55,15 +55,13 @@ const userDisplay = async () => {
 
   for (let i = 0; i < userData.photographers.length; i++) {
     let photographer = userData.photographers[i];
-    console.log(photographer);
+
     if (photographer.id == photographerId) {
-      console.log("un");
       currentUserDetails = photographer;
       break;
     }
   }
   constructMediaHtml();
-  console.log(currentUserDetails);
   constructInfoPhotographer(currentUserDetails, filterTags(currentUserDetails));
 };
 
@@ -133,17 +131,15 @@ const filterTags = () => {
   for (let i = 0; i < currentUserDetails.tags.length; i++) {
     let tag = currentUserDetails.tags[i];
     filterTags += ` 
-      <span >#${tag}</span>
+      <span class="filters__profile">#${tag}</span>
     `;
   }
   return filterTags;
 };
-console.log(currentUserDetails);
 
 // incrementation info photographe par javascript
 
 function constructInfoPhotographer(photographer, filterTags) {
-  console.log(photographer);
   presentationPhotographer.innerHTML += `
   <h1 class="presentation__pro">${photographer.name}</h1>
   <p class="presentation__city">${photographer.city}, ${photographer.country}</p>
