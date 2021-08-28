@@ -38,7 +38,7 @@ const userMedia = async () => {
 // Import media Photographers
 const currentUserMedia = [];
 // Import photographers details
-const currentUserDetails = [];
+let currentUserDetails = {};
 
 const userDisplay = async () => {
   await userMedia();
@@ -53,13 +53,18 @@ const userDisplay = async () => {
     return b.likes - a.likes;
   });
 
-  userData.photographers.forEach((photographer) => {
+  for (let i = 0; i < userData.photographers.length; i++) {
+    let photographer = userData.photographers[i];
+    console.log(photographer);
     if (photographer.id == photographerId) {
-      currentUserDetails.push(photographer);
+      console.log("un");
+      currentUserDetails = photographer;
+      break;
     }
-  });
+  }
   constructMediaHtml();
-  constructInfoPhotographer();
+  console.log(currentUserDetails);
+  constructInfoPhotographer(currentUserDetails, filterTags(currentUserDetails));
 };
 
 userDisplay();
@@ -121,16 +126,29 @@ function incrementLikes(mediaId) {
   constructMediaHtml();
 }
 
+// boucle pour implementer les span des filtres de chaque photographes
+
+const filterTags = () => {
+  let filterTags = "";
+  for (let i = 0; i < currentUserDetails.tags.length; i++) {
+    let tag = currentUserDetails.tags[i];
+    filterTags += ` 
+      <span >#${tag}</span>
+    `;
+  }
+  return filterTags;
+};
+console.log(currentUserDetails);
+
 // incrementation info photographe par javascript
 
-function constructInfoPhotographer() {
-  currentUserMedia.forEach((photographer) => {
-    presentationPhotographer.innerHTML += `
-    
+function constructInfoPhotographer(photographer, filterTags) {
+  console.log(photographer);
+  presentationPhotographer.innerHTML += `
   <h1 class="presentation__pro">${photographer.name}</h1>
   <p class="presentation__city">${photographer.city}, ${photographer.country}</p>
   <p class="presentation__description">${photographer.tagline}</p>
-  <div class="presentation__filters filters"></div>
+  <div class="presentation__filters filters" id="btn">${filterTags}</div>
   <button class="presentation__contact">Contactez-moi</button>
   <img
     class="presentation__image"
@@ -138,8 +156,4 @@ function constructInfoPhotographer() {
     alt="${photographer.name}"
   />
     `;
-  });
 }
-constructInfoPhotographer();
-// boucle pour implementer les span des filtres de chaque photographes
-/* for (let i = 0; i < currentUserDetails.length; i++) {} */
