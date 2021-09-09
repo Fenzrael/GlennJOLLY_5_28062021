@@ -220,3 +220,18 @@ body {
     right: 0;
   }
 }
+
+#filter {
+  padding: 0.8rem;
+  background-color: $color-primary;
+  color: white;
+}
+
+.heart {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background-color: $color-orangeSalmon;
+  border: 1px solid $color-orangeSalmon;
+  border-radius: 0.32rem;
+}

@@ -1,3 +1,4 @@
+// Variables
 const params = new URLSearchParams(document.location.search.substring(1));
 
 const photographerId = params.get("photographerId");
@@ -7,24 +8,11 @@ const likeCount = document.getElementsByClassName("legend__likes");
 
 const gallery = document.getElementById("gallery");
 const presentationPhotographer = document.getElementById("presentation");
+const boxHeart = document.getElementById("boxHeart");
 
 const pathToImgDirectory = "./img/";
 
-// Variable pouvant stocker le photographe en cours
-
-/* const currentPhotographer = {
-  name: "Mimi Keel",
-  id: 243,
-  city: "London",
-  country: "UK",
-  tags: ["portrait", "events", "travel", "animals"],
-  tagline: "Voir le beau dans le quotidien",
-  price: 400,
-  portrait: "MimiKeel.jpg",
-};
- */
-
-// Import données data.json
+// Import data of data.json
 let userData = [];
 
 const userMedia = async () => {
@@ -48,7 +36,8 @@ const userDisplay = async () => {
       currentUserMedia.push(media);
     }
   });
-  //tri par defaut
+
+  //Sort by default
   currentUserMedia.sort(function (a, b) {
     return b.likes - a.likes;
   });
@@ -73,19 +62,19 @@ function constructMediaHtml() {
     gallery.innerHTML += `
     <figure class="gallery__photo photo"> 
     <img
-      class="photo__image"
-      src="./img/${media.image}" 
-      alt="${media.title}"
+    class="photo__image"
+    src="./img/${media.image}" 
+    alt="${media.title}"
     />
     <figcaption class="legend">
-      ${media.title}<span class="legend__likes">${media.likes}</span
-      ><span class="fas fa-heart legend__icon" onclick="incrementLikes(${media.id})"></span>
+    ${media.title}<span class="legend__likes">${media.likes}</span
+    ><span class="fas fa-heart legend__icon" onclick="incrementLikes(${media.id})"></span>
     </figcaption>
-  </figure>`;
+    </figure>`;
   });
 }
 
-// Implementation tri
+// Implement sort
 
 const selectFilter = document.getElementById("filter");
 selectFilter.addEventListener("change", function (e) {
@@ -124,32 +113,47 @@ function incrementLikes(mediaId) {
   constructMediaHtml();
 }
 
-// boucle pour implementer les span des filtres de chaque photographes
+// loop for implement span filters of each photographer
 
 const filterTags = () => {
   let filterTags = "";
   for (let i = 0; i < currentUserDetails.tags.length; i++) {
     let tag = currentUserDetails.tags[i];
     filterTags += ` 
-      <span class="filters__profile">#${tag}</span>
+    <a class="presentation__link" href="./index.html?filterTag=${tag}"><span class="filters__profile">#${tag}</span></a>
     `;
   }
   return filterTags;
 };
 
-// incrementation info photographe par javascript
+// increment info photographer by javascript
 
 function constructInfoPhotographer(photographer, filterTags) {
   presentationPhotographer.innerHTML += `
   <h1 class="presentation__pro">${photographer.name}</h1>
   <p class="presentation__city">${photographer.city}, ${photographer.country}</p>
   <p class="presentation__description">${photographer.tagline}</p>
+  
   <div class="presentation__filters filters" id="btn">${filterTags}</div>
+  
   <button class="presentation__contact">Contactez-moi</button>
   <img
-    class="presentation__image"
-    src="img/photographersIDPhotos/${photographer.portrait}"
-    alt="${photographer.name}"
+  class="presentation__image"
+  src="img/photographersIDPhotos/${photographer.portrait}"
+  alt="${photographer.name}"
   />
-    `;
+  `;
 }
+
+function totalHeart() {}
+
+function constructBoxTotalHeart(photographer) {
+  boxHeart.innerHTML += `
+  <p>${totalHeart}<span class="fas fa-heart legend__icon heart"></span></p>
+  <p>${photographer.price}/jour</p>
+  `;
+  constructMediaHtml();
+}
+constructBoxTotalHeart(currentUserDetails);
+
+console.log(boxHeart);

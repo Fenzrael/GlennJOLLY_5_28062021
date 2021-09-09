@@ -1,6 +1,8 @@
 // Javascript page accueil
+const params = new URLSearchParams(document.location.search.substring(1));
 const sectionPhotographer = document.getElementById("photograph");
-
+const navigation = document.getElementsByClassName("navigation__filters");
+const filterTag = params.get("filterTag");
 // Import données data.json
 
 function getPhotographers() {
@@ -8,13 +10,16 @@ function getPhotographers() {
     .then((res) => res.json())
     .then((data) => data.photographers);
 }
-
-getPhotographers().then((photographers) => {
-  for (let i = 0; i < photographers.length; i++) {
-    let photographer = photographers[i];
-    constructPhotographerHtml(photographer);
-  }
-});
+if (filterTag) {
+  filterByTag(filterTag);
+} else {
+  getPhotographers().then((photographers) => {
+    for (let i = 0; i < photographers.length; i++) {
+      let photographer = photographers[i];
+      constructPhotographerHtml(photographer);
+    }
+  });
+}
 
 function constructPhotographerHtml(photographer) {
   sectionPhotographer.innerHTML += `
