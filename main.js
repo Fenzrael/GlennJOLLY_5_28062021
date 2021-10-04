@@ -79,6 +79,6 @@ function filterByTag(tagName) {
     });
 }
 
-window.addEventListener("scroll", (e) => {
-  console.log(e);
+window.addEventListener("scroll", () => {
+  headerLink.style.display = "block";
 });

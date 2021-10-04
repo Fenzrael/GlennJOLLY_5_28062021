@@ -5,6 +5,8 @@ const params = new URLSearchParams(document.location.search.substring(1));
 
 const photographerId = params.get("photographerId");
 
+const test = document.querySelector(".test");
+
 const likeButton = document.getElementsByClassName("legend__icon");
 const likeCount = document.getElementsByClassName("legend__likes");
 
@@ -195,13 +197,14 @@ function mediaFactory(media) {
 
 function openModal() {
   modal.style.display = "block";
-  document.body.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+  test.style.display = "block";
 }
 
 // close Modal
 
 function closeModal() {
   modal.style.display = "none";
+  test.style.display = "none";
 }
 
 cross.addEventListener("click", closeModal);
