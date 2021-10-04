@@ -1,9 +1,13 @@
-// Javascript page accueil
+// Javascript Homepage
+
+// Variables
 const params = new URLSearchParams(document.location.search.substring(1));
 const sectionPhotographer = document.getElementById("photograph");
 const navigation = document.getElementsByClassName("navigation__filters");
 const filterTag = params.get("filterTag");
-// Import données data.json
+const headerLink = document.querySelector(".header__link");
+
+// Import datas data.json
 
 function getPhotographers() {
   return fetch("./data.json")
@@ -24,14 +28,14 @@ if (filterTag) {
 function constructPhotographerHtml(photographer) {
   sectionPhotographer.innerHTML += `
   
-  <article class="photograph__profile profile">
+  <article class="photograph__profile profile" aria-label="photographer generality">
   <a
     class="profile__link link"
     href="./proDetails.html?photographerId=${photographer.id}"
   >
     <img class="link__image" src="img/photographersIDPhotos/${
       photographer.portrait
-    }" alt="${photographer.name}" />
+    }" alt="" aria-label="${photographer.name}"/>
     <h1 class="link__title">${photographer.name}</h1>
   </a>
   <div class="profile__describe describe">
@@ -53,7 +57,7 @@ function constructFilterTags(tags) {
   for (let i = 0; i < tags.length; i++) {
     let tag = tags[i];
     filterTags += ` 
-      <span class="filters__profile" onclick="filterByTag('${tag}')">#${tag}</span>
+      <span class="filters__profile" onclick="filterByTag('${tag}')" tabindex="0">#${tag}</span>
     `;
   }
   return filterTags;
@@ -74,3 +78,7 @@ function filterByTag(tagName) {
       }
     });
 }
+
+window.addEventListener("scroll", (e) => {
+  console.log(e);
+});

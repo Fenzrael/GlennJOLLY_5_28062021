@@ -9,10 +9,11 @@
       src="https://kit.fontawesome.com/71f14f71be.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="icon" href="./img/icon/iconePhoto.png" />
     <title>Mimi Keel</title>
   </head>
   <body>
-    <header class="header">
+    <header class="header" role="banner">
       <a href="./index.html">
         <img
           id="pro"
@@ -22,19 +23,57 @@
         />
       </a>
     </header>
-    <main>
+    <main role="main">
       <section id="presentation"></section>
       <section class="filterNav">
         <label class="label" for="filter">Trier par</label>
-        <select name="selection" id="filter" class="sort">
+        <select name="selection" id="filter" class="sort" aria-label="Order by">
           <option class="sort__selection" value="Popularity">Popularité</option>
           <option class="sort__selection" value="Date">Date</option>
           <option class="sort__selection" value="Title">Titre</option>
         </select>
       </section>
       <section id="gallery"></section>
+      <section id="lightbox">
+        <div class="lightbox">
+          <button class="lightbox__close" aria-label="lightbox close">
+            <span class="fas fa-times"></span>
+          </button>
+          <button class="lightbox__next" aria-label="lightbox next">
+            <span class="fas fa-chevron-left"></span>
+          </button>
+          <button class="lightbox__prev" aria-label="lightbox previously">
+            <span class="fas fa-chevron-right"></span>
+          </button>
+          <div
+            class="lightbox__container"
+            aria-label="lightbox container"
+          ></div>
+        </div>
+      </section>
       <section id="boxHeart"></section>
+      <form class="modal">
+        <p class="modal__presentation">Contactez Moi</p>
+        <span class="fas fa-times fa-lg modal__cross"></span>
+        <div class="modal__block">
+          <label for="firstName">Prénom:</label>
+          <input id="firstName" class="" type="text" />
+        </div>
+        <div class="modal__block">
+          <label for="secondName">Nom:</label>
+          <input id="secondName" type="text" />
+        </div>
+        <div class="modal__block">
+          <label for="email">Email:</label>
+          <input id="email" type="text" />
+        </div>
+        <div class="modal__block">
+          <label for="textArea">Votre message:</label>
+          <textarea id="textArea" type="text"></textarea>
+        </div>
+        <button class="modal__submit" type="submit">Envoyer</button>
+      </form>
     </main>
-    <script src="./pro.js"></script>
+    <script type="text/javascript" src="./pro.js"></script>
   </body>
 </html>

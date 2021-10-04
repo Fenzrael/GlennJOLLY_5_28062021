@@ -1,3 +1,5 @@
+// Javascript Photographer Page
+
 // Variables
 const params = new URLSearchParams(document.location.search.substring(1));
 
@@ -8,12 +10,23 @@ const likeCount = document.getElementsByClassName("legend__likes");
 
 const gallery = document.getElementById("gallery");
 const presentationPhotographer = document.getElementById("presentation");
+
+const modal = document.querySelector(".modal");
+const cross = document.querySelector(".modal__cross");
+
 const boxHeart = document.getElementById("boxHeart");
 
 const pathToImgDirectory = "./img/";
 
-// Import data of data.json
+// Import Photographers media
+const currentUserMedia = [];
+console.log(currentUserMedia);
+// Import photographers details
+let currentUserDetails = {};
+console.log(currentUserDetails);
 let userData = [];
+
+// Import data of data.json
 
 const userMedia = async () => {
   await fetch("./data.json")
@@ -22,11 +35,6 @@ const userMedia = async () => {
 
   console.log(userData);
 };
-
-// Import media Photographers
-const currentUserMedia = [];
-// Import photographers details
-let currentUserDetails = {};
 
 const userDisplay = async () => {
   await userMedia();
@@ -52,6 +60,7 @@ const userDisplay = async () => {
   }
   constructMediaHtml();
   constructInfoPhotographer(currentUserDetails, filterTags(currentUserDetails));
+  constructBoxTotalHeart(currentUserDetails, totalHeart(currentUserMedia));
 };
 
 userDisplay();
@@ -61,14 +70,12 @@ function constructMediaHtml() {
   currentUserMedia.forEach((media) => {
     gallery.innerHTML += `
     <figure class="gallery__photo photo"> 
-    <img
-    class="photo__image"
-    src="./img/${media.image}" 
-    alt="${media.title}"
-    />
+    ${mediaFactory(media)}
     <figcaption class="legend">
     ${media.title}<span class="legend__likes">${media.likes}</span
-    ><span class="fas fa-heart legend__icon" onclick="incrementLikes(${media.id})"></span>
+    ><span class="fas fa-heart legend__icon" onclick="incrementLikes(${
+      media.id
+    })" aria-label="likes"></span>
     </figcaption>
     </figure>`;
   });
@@ -111,6 +118,7 @@ function incrementLikes(mediaId) {
     }
   }
   constructMediaHtml();
+  constructBoxTotalHeart(currentUserDetails, totalHeart(currentUserMedia));
 }
 
 // loop for implement span filters of each photographer
@@ -120,7 +128,7 @@ const filterTags = () => {
   for (let i = 0; i < currentUserDetails.tags.length; i++) {
     let tag = currentUserDetails.tags[i];
     filterTags += ` 
-    <a class="presentation__link" href="./index.html?filterTag=${tag}"><span class="filters__profile">#${tag}</span></a>
+    <a class="presentation__link" href="./index.html?filterTag=${tag}" aria-label="filter Tags"><span class="filters__profile">#${tag}</span></a>
     `;
   }
   return filterTags;
@@ -130,30 +138,70 @@ const filterTags = () => {
 
 function constructInfoPhotographer(photographer, filterTags) {
   presentationPhotographer.innerHTML += `
-  <h1 class="presentation__pro">${photographer.name}</h1>
-  <p class="presentation__city">${photographer.city}, ${photographer.country}</p>
-  <p class="presentation__description">${photographer.tagline}</p>
-  
+  <h1 class="presentation__pro" aria-label="Title name photographer">${photographer.name}</h1>
+  <p class="presentation__city" aria-label="Geolocation">${photographer.city}, ${photographer.country}</p>
+  <p class="presentation__description" aria-label="Citation photographer">${photographer.tagline}</p>
   <div class="presentation__filters filters" id="btn">${filterTags}</div>
-  
-  <button class="presentation__contact">Contactez-moi</button>
+  <button class="presentation__contact" aria-label="Contact Me">Contactez-moi</button>
   <img
   class="presentation__image"
   src="img/photographersIDPhotos/${photographer.portrait}"
   alt="${photographer.name}"
   />
   `;
+  const contact = document.getElementsByClassName("presentation__contact");
+  console.log(contact);
+  contact[0].addEventListener("click", openModal);
 }
 
-function totalHeart() {}
+// Function count heart and price per photographer
 
-function constructBoxTotalHeart(photographer) {
-  boxHeart.innerHTML += `
-  <p>${totalHeart}<span class="fas fa-heart legend__icon heart"></span></p>
-  <p>${photographer.price}/jour</p>
+function totalHeart(mediasList) {
+  let sum = 0;
+  for (let media of mediasList) {
+    sum += media.likes;
+  }
+  return sum;
+}
+
+function constructBoxTotalHeart(photographer, totalHeart) {
+  boxHeart.innerHTML = `
+  <p class="icon">${totalHeart}
+    <span class="fas fa-heart" aria-label="likes"></span></p>
+  <p class="price">${photographer.price}€/jour</p>
   `;
-  constructMediaHtml();
 }
-constructBoxTotalHeart(currentUserDetails);
 
-console.log(boxHeart);
+// Factory Function (video or image)
+function mediaFactory(media) {
+  if (media.video) {
+    return `<video controls width="310" class="photo__video">
+    <source src="./img/${media.video}"
+            type="video/mp4">
+            role="application"
+    </video>`;
+  } else {
+    return `
+    <img
+    class="photo__image"
+    src="./img/${media.image}" 
+    alt=""
+    tabindex="0"
+    />`;
+  }
+}
+
+// open Modal
+
+function openModal() {
+  modal.style.display = "block";
+  document.body.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+}
+
+// close Modal
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+cross.addEventListener("click", closeModal);

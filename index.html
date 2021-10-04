@@ -9,48 +9,105 @@
       src="https://kit.fontawesome.com/71f14f71be.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="icon" href="./img/icon/iconePhoto.png" />
     <title>Fisheye</title>
   </head>
   <body>
-    <header class="header">
-      <a class="header__link" href="">Passer au contenu</a>
-      <img
-        class="header__image"
-        src="./img/logoEntreprise/fisheye.png"
-        alt="logo"
-      />
-      <nav class="header__navigation">
+    <header class="header" role="banner">
+      <a class="header__link" href="#main" aria-label="return to the main"
+        >Passer au contenu</a
+      >
+      <a class="header__image" href="./index.html" alt="Fisheye Home Page">
+        <img
+          src="./img/logoEntreprise/fisheye.png"
+          alt="Fisheye Home Page"
+          aria-label="logo link"
+        />
+      </a>
+      <nav
+        class="header__navigation"
+        role="navigation"
+        aria-label="photographer tags"
+      >
         <ul class="navigation">
-          <li class="navigation__filters" onclick="filterByTag('portrait')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('portrait')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Portrait
           </li>
-          <li class="navigation__filters" onclick="filterByTag('art')">#Art</li>
-          <li class="navigation__filters" onclick="filterByTag('fashion')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('art')"
+            aria-label="tags link"
+            tabindex="0"
+          >
+            #Art
+          </li>
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('fashion')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Fashion
           </li>
-          <li class="navigation__filters" onclick="filterByTag('architecture')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('architecture')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Architecture
           </li>
-          <li class="navigation__filters" onclick="filterByTag('travel')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('travel')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Travel
           </li>
-          <li class="navigation__filters" onclick="filterByTag('sport')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('sport')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Sports
           </li>
-          <li class="navigation__filters" onclick="filterByTag('animals')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('animals')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Animals
           </li>
-          <li class="navigation__filters" onclick="filterByTag('events')">
+          <li
+            class="navigation__filters"
+            onclick="filterByTag('events')"
+            aria-label="tags link"
+            tabindex="0"
+          >
             #Events
           </li>
         </ul>
       </nav>
-      <h1 class="header__title">Nos Photographes</h1>
+      <h1 class="header__title" role="title presentation photographers">
+        Nos Photographes
+      </h1>
     </header>
 
-    <main>
-      <section class="photograph" id="photograph"></section>
+    <main id="main" aria-label="main section">
+      <section
+        class="photograph"
+        id="photograph"
+        aria-label="photographers section"
+      ></section>
     </main>
-    <script src="./main.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
   </body>
 </html>

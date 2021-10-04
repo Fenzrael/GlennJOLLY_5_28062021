@@ -9,12 +9,19 @@ $color-secondary: #d3573c;
 $color-greyLight: #fafafa;
 $color-greyMiddle: #c4c4c4;
 $color-greyDark: #525252;
+$color-greyPrice: #757575;
 $color-orangeSalmon: #db8876;
+
+@font-face {
+  font-family: "DM Sans";
+  src: url(/Policy/DMSans-Regular.ttf) format("truetype");
+}
 
 * {
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
+  font-family: "DM Sans", sans-serif;
 }
 
 body {
@@ -24,6 +31,7 @@ body {
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   &__link {
     display: none;
@@ -32,12 +40,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: dark;
-    background-color: $color-orangeSalmon;
+    background-color: rgba(219, 136, 118, 0.7);
     border: 2px solid $color-orangeSalmon;
     border-radius: 0.4rem;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     padding: 0.2rem 0.4rem;
     color: $color-greyDark;
@@ -46,11 +54,11 @@ body {
     width: 12.5rem;
     height: 3.125rem;
     align-self: center;
-    margin-left: 1rem;
+    margin: 0.8rem 0 0 1rem;
   }
   &__title {
     color: $color-primary;
-    margin-right: 1rem;
+    margin: 1.5rem 1rem 0 0;
   }
 }
 
@@ -58,14 +66,16 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 45rem;
+  max-width: 45rem;
   padding: 0;
   margin-top: 2rem;
   &__filters {
     display: flex;
     justify-content: space-between;
+    align-content: space-around;
     flex-wrap: wrap;
     text-align: center;
+    margin: 0.1rem 0.3rem;
     padding: 0 0.2rem;
     height: 1.7rem;
     border: 1px solid #c4c4c4;
@@ -75,6 +85,10 @@ body {
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
+    &:hover {
+      background-color: #901c1c;
+      color: white;
+    }
   }
 }
 .profile {
@@ -110,6 +124,14 @@ body {
   }
 }
 
+.describe {
+  &__location {
+    color: $color-primary;
+  }
+  &__price {
+    color: $color-greyPrice;
+  }
+}
 .filters {
   &__profile {
     text-align: center;
@@ -122,14 +144,16 @@ body {
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
+    &:hover {
+      background-color: #901c1c;
+      color: white;
+    }
   }
 }
 
 #presentation,
 .presentation {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 5, 1fr);
-  grid-auto-rows: repeat(auto-fill, 4, 1fr);
   background-color: $color-greyLight;
   min-height: 20rem;
   margin: 1rem 3rem;
@@ -153,10 +177,12 @@ body {
   &__city {
     grid-column: 1/1;
     margin-left: 3rem;
+    color: $color-primary;
   }
   &__description {
     margin-left: 3rem;
     grid-column: 1/3;
+    color: $color-greyDark;
   }
   &__filters {
     margin-left: 3rem;
@@ -166,11 +192,17 @@ body {
     grid-row: 1/1;
     grid-column: 3/4;
     margin-top: 3rem;
-    width: 50%;
+    width: 60%;
     height: 35%;
     background-color: $color-primary;
     border-radius: 10%/20%;
     color: white;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      background-color: $color-secondary;
+      transform: scale(0.98);
+    }
   }
 }
 
@@ -188,7 +220,8 @@ body {
 
 #gallery {
   display: grid;
-  grid-gap: 0.2rem;
+  width: 100vw;
+  grid-gap: 0.3rem;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -200,6 +233,13 @@ body {
   &__image {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
+  }
+  &__video {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: fill;
   }
 }
 
@@ -223,15 +263,112 @@ body {
 
 #filter {
   padding: 0.8rem;
+  border-radius: 5px;
   background-color: $color-primary;
   color: white;
 }
 
-.heart {
+#boxHeart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
-  right: 0;
+  right: 2rem;
   bottom: 0;
-  background-color: $color-orangeSalmon;
+  width: 17rem;
+  height: 3rem;
+  background-color: rgba(219, 136, 118, 0.9);
   border: 1px solid $color-orangeSalmon;
   border-radius: 0.32rem;
+}
+
+.icon {
+  margin-left: 1rem;
+}
+
+.price {
+  margin-right: 1rem;
+}
+
+.legend {
+  color: $color-primary;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  width: 40%;
+  height: 90%;
+  margin: 1rem auto;
+  background-color: $color-orangeSalmon;
+  border-radius: 5px;
+  font-size: 1.5rem;
+
+  &__presentation {
+    margin: 1rem;
+    font-weight: 700;
+    font-size: xx-large;
+  }
+  &__cross {
+    position: absolute;
+    top: 1.7rem;
+    right: 1.2rem;
+    color: white;
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    margin: 1rem;
+  }
+  &__submit {
+    width: 10rem;
+    height: 4rem;
+    margin: 0 0 1rem 1rem;
+    border-radius: 5px;
+    background-color: $color-primary;
+    color: white;
+  }
+}
+
+#textArea {
+  height: 7rem;
+}
+
+/* .lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+  &__next,
+  &__prev {
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0
+    margin-top: -1rem;
+    background: url(./img/icon/chevron-right-solid.svg) center center / 100%
+      100% no-repeat;
+    border: none;
+    width: 1rem;
+    height: 2rem;
+    z-index: 11;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+} */
+
+input,
+textarea {
+  border-radius: 5px;
 }
