@@ -20,6 +20,14 @@ const boxHeart = document.getElementById("boxHeart");
 
 const pathToImgDirectory = "./img/";
 
+const inputs = document.querySelectorAll(
+  'input[type="text"], input[type="email"], input[type="textarea"]'
+);
+const firstName = document.getElementById("firstName");
+const secondName = document.getElementById("secondName");
+const email = document.getElementById("email");
+const textArea = document.getElementById("textArea");
+
 // Import Photographers media
 const currentUserMedia = [];
 console.log(currentUserMedia);
@@ -152,7 +160,6 @@ function constructInfoPhotographer(photographer, filterTags) {
   />
   `;
   const contact = document.getElementsByClassName("presentation__contact");
-  console.log(contact);
   contact[0].addEventListener("click", openModal);
 }
 
@@ -207,4 +214,116 @@ function closeModal() {
   test.style.display = "none";
 }
 
-cross.addEventListener("click", closeModal);
+//*********************************************************************************************************
+// Search Value enter by User
+//*********************************************************************************************************
+
+inputs.forEach((input) => {
+  input.addEventListener("change", (e) => {
+    switch (e.target.id) {
+      case "firstName":
+        firstNameChecker(e.target.value);
+        break;
+      case "secondName":
+        secondNameChecker(e.target.value);
+        break;
+      case "email":
+        emailChecker(e.target.value);
+        break;
+      case "textArea":
+        textAreaChecker(e.target.value);
+        break;
+      default:
+        null;
+    }
+  });
+});
+
+//*********************************************************************************************************
+// Function Arrow Checker (Verification of Validate Data)
+//*********************************************************************************************************
+// First Name Section
+const firstNameChecker = (value) => {
+  if (value.length < 2 || value.length === 0) {
+    firstName.classList.add("error");
+    firstName.style.animation =
+      "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+    firstName.style.transform = "translate3d(0, 0, 0)";
+    /* firstName = null; */
+  } else {
+    firstName.classList.remove("error");
+    /* firstName = value; */
+  }
+};
+
+// Second Name Section
+const secondNameChecker = (value) => {
+  if (value.length < 2 || value.length === 0) {
+    secondName.classList.add("error");
+    secondName.style.animation =
+      "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+    secondName.style.transform = "translate3d(0, 0, 0)";
+    /* secondName = null; */
+  } else {
+    secondName.classList.remove("error");
+    /* secondName = value; */
+  }
+};
+
+// Email Section
+const emailChecker = (value) => {
+  if (value.length <= 0 || !value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
+    email.classList.add("error");
+    email.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+    email.style.transform = "translate3d(0, 0, 0)";
+    /* email = null; */
+  } else {
+    email.classList.remove("error");
+    /* email = value; */
+  }
+  console.log(email);
+};
+
+//TexArea Section
+const textAreaChecker = (value) => {
+  if (value.length === 0) {
+    textArea.classList.add("error");
+    textArea.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+    textArea.style.transform = "translate3d(0, 0, 0)";
+    /* textArea = null; */
+  } else {
+    textArea.classList.remove("error");
+    /* textArea = value; */
+  }
+};
+//*********************************************************************************************************
+// Submit Section
+//*********************************************************************************************************
+
+// Form Validation
+modal.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (
+    firstName.value == "" ||
+    secondName.value == "" ||
+    email.value == "" ||
+    textArea.value == ""
+  ) {
+    firstNameChecker(firstName.value);
+    secondNameChecker(secondName.value);
+    emailChecker(email.value);
+    textAreaChecker(textArea.value);
+    e.preventDefault();
+    return false;
+  } else {
+    /* cross.addEventListener("click", closeModal); */
+    return true;
+  }
+});
+
+const modalPresentation = document.querySelector(".modal__presentation");
+
+function addNameModal(photographer) {
+  modalPresentation.textContent += `${photographer.name}`;
+}
+addNameModal();
