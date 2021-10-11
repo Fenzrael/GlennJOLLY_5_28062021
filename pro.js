@@ -27,6 +27,12 @@ const firstName = document.getElementById("firstName");
 const secondName = document.getElementById("secondName");
 const email = document.getElementById("email");
 const textArea = document.getElementById("textArea");
+const errorMessage = document.querySelectorAll(".errorMessage");
+
+const lightbox = document.getElementById("lightbox");
+const lightboxContainer = document.getElementById("lightbox__container");
+
+let lightboxMediaIndex = 0;
 
 // Import Photographers media
 const currentUserMedia = [];
@@ -71,6 +77,7 @@ const userDisplay = async () => {
   constructMediaHtml();
   constructInfoPhotographer(currentUserDetails, filterTags(currentUserDetails));
   constructBoxTotalHeart(currentUserDetails, totalHeart(currentUserMedia));
+  addNameModal(currentUserDetails);
 };
 
 userDisplay();
@@ -200,8 +207,50 @@ function mediaFactory(media) {
     src="./img/${media.image}" 
     alt=""
     tabindex="0"
+    onClick="openMedia(${findMediaIndex(media.id)})" 
     />`;
   }
+}
+
+function openMedia(mediaIndex) {
+  lightboxMediaIndex = mediaIndex;
+  const media = currentUserMedia[mediaIndex];
+  console.log(media);
+  lightbox.style.display = "block";
+  lightboxContainer.innerHTML = mediaFactory(media);
+}
+
+function findMediaIndex(mediaId) {
+  for (let i = 0; i < currentUserMedia.length; i++) {
+    if (currentUserMedia[i].id == mediaId) {
+      return i;
+    }
+  }
+  return null;
+}
+
+function next() {
+  if (lightboxMediaIndex == currentUserMedia.length - 1) {
+    lightboxMediaIndex = 0;
+  } else {
+    lightboxMediaIndex++;
+  }
+
+  openMedia(lightboxMediaIndex);
+}
+
+function previous() {
+  if (lightboxMediaIndex == 0) {
+    lightboxMediaIndex = currentUserMedia.length - 1;
+  } else {
+    lightboxMediaIndex--;
+  }
+
+  openMedia(lightboxMediaIndex);
+}
+
+function closeLightbox() {
+  lightbox.style.display = "none";
 }
 
 // open Modal
@@ -218,6 +267,7 @@ function closeModal() {
   test.style.display = "none";
 }
 
+cross.addEventListener("click", closeModal);
 //*********************************************************************************************************
 // Search Value enter by User
 //*********************************************************************************************************
@@ -253,10 +303,9 @@ const firstNameChecker = (value) => {
     firstName.style.animation =
       "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
     firstName.style.transform = "translate3d(0, 0, 0)";
-    /* firstName = null; */
+    errorMessage[0].style.display = "block";
   } else {
     firstName.classList.remove("error");
-    /* firstName = value; */
   }
 };
 
@@ -267,10 +316,9 @@ const secondNameChecker = (value) => {
     secondName.style.animation =
       "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
     secondName.style.transform = "translate3d(0, 0, 0)";
-    /* secondName = null; */
+    errorMessage[1].style.display = "block";
   } else {
     secondName.classList.remove("error");
-    /* secondName = value; */
   }
 };
 
@@ -280,10 +328,9 @@ const emailChecker = (value) => {
     email.classList.add("error");
     email.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
     email.style.transform = "translate3d(0, 0, 0)";
-    /* email = null; */
+    errorMessage[2].style.display = "block";
   } else {
     email.classList.remove("error");
-    /* email = value; */
   }
   console.log(email);
 };
@@ -294,12 +341,12 @@ const textAreaChecker = (value) => {
     textArea.classList.add("error");
     textArea.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
     textArea.style.transform = "translate3d(0, 0, 0)";
-    /* textArea = null; */
+    errorMessage[3].style.display = "block";
   } else {
     textArea.classList.remove("error");
-    /* textArea = value; */
   }
 };
+
 //*********************************************************************************************************
 // Submit Section
 //*********************************************************************************************************
@@ -320,7 +367,7 @@ modal.addEventListener("submit", (e) => {
     e.preventDefault();
     return false;
   } else {
-    /* cross.addEventListener("click", closeModal); */
+    closeModal();
     return true;
   }
 });
@@ -328,6 +375,5 @@ modal.addEventListener("submit", (e) => {
 const modalPresentation = document.querySelector(".modal__presentation");
 
 function addNameModal(photographer) {
-  modalPresentation.textContent += `${photographer.name}`;
+  modalPresentation.textContent += ` ${photographer.name}`;
 }
-addNameModal();

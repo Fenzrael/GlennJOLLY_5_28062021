@@ -36,17 +36,17 @@
       <section id="gallery"></section>
       <section id="lightbox">
         <div class="lightbox">
-          <button class="lightbox__close" aria-label="lightbox close">
+          <button class="lightbox__close" aria-label="lightbox close" onclick="closeLightbox()">
             <span class="fas fa-times"></span>
           </button>
-          <button class="lightbox__next" aria-label="lightbox next">
+          <button class="lightbox__prev" aria-label="lightbox previously" onclick="previous()">
             <span class="fas fa-chevron-left"></span>
           </button>
-          <button class="lightbox__prev" aria-label="lightbox previously">
+          <button class="lightbox__next" aria-label="lightbox next" onclick="next()">
             <span class="fas fa-chevron-right"></span>
           </button>
           <div
-            class="lightbox__container"
+            id="lightbox__container"
             aria-label="lightbox container"
           ></div>
         </div>
@@ -62,22 +62,22 @@
           <div class="modal__block" aria-label="First Name">
             <label for="firstName">Prénom:</label>
             <input id="firstName" class="" type="text" />
-            <span class="errorMessage"></span>
+            <span class="errorMessage">Veuillez Remplir correctement le Champ!</span>
           </div>
           <div class="modal__block" aria-label="Last Name">
             <label for="secondName">Nom:</label>
             <input id="secondName" type="text" />
-            <span class="errorMessage"></span>
+            <span class="errorMessage">Veuillez Remplir correctement le Champ!</span>
           </div>
           <div class="modal__block" aria-label="Email">
             <label for="email">Email:</label>
             <input id="email" type="email" />
-            <span class="errorMessage"></span>
+            <span class="errorMessage">Veuillez Remplir correctement le Champ!</span>
           </div>
           <div class="modal__block" aria-label="Your message">
             <label for="textArea">Votre message:</label>
             <input id="textArea" type="textarea"></textarea>
-            <span class="errorMessage"></span>
+            <span class="errorMessage">Veuillez Remplir correctement le Champ!</span>
           </div>
           <button class="modal__submit" type="submit" aria-label="Send">
             Envoyer
