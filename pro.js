@@ -138,7 +138,8 @@ const filterTags = () => {
   for (let i = 0; i < currentUserDetails.tags.length; i++) {
     let tag = currentUserDetails.tags[i];
     filterTags += ` 
-    <a class="presentation__link" href="./index.html?filterTag=${tag}" aria-label="filter Tags"><span class="filters__profile">#${tag}</span></a>
+    <a class="presentation__link" href="./index.html?filterTag=${tag}" 
+       aria-label="filter Tags"><span class="filters__profile">#${tag}</span></a>
     `;
   }
   return filterTags;
@@ -148,9 +149,12 @@ const filterTags = () => {
 
 function constructInfoPhotographer(photographer, filterTags) {
   presentationPhotographer.innerHTML += `
-  <h1 class="presentation__pro" aria-label="Title name photographer">${photographer.name}</h1>
-  <p class="presentation__city" aria-label="Geolocation">${photographer.city}, ${photographer.country}</p>
-  <p class="presentation__description" aria-label="Citation photographer">${photographer.tagline}</p>
+  <h1 class="presentation__pro" aria-label="Title name photographer">
+      ${photographer.name}</h1>
+  <p class="presentation__city" aria-label="Geolocation">
+      ${photographer.city}, ${photographer.country}</p>
+  <p class="presentation__description" aria-label="Citation photographer">
+      ${photographer.tagline}</p>
   <div class="presentation__filters filters" id="btn">${filterTags}</div>
   <button class="presentation__contact" aria-label="Contact Me">Contactez-moi</button>
   <img
