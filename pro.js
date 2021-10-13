@@ -5,7 +5,7 @@ const params = new URLSearchParams(document.location.search.substring(1));
 
 const photographerId = params.get("photographerId");
 
-const test = document.querySelector(".test");
+const modalContainer = document.getElementById("modalContainer");
 
 const likeButton = document.getElementsByClassName("legend__icon");
 const likeCount = document.getElementsByClassName("legend__likes");
@@ -199,6 +199,7 @@ function mediaFactory(media) {
     <source src="./img/${media.video}"
             type="video/mp4">
             role="application"
+            onClick="openMedia(${findMediaIndex(media.id)})
     </video>`;
   } else {
     return `
@@ -211,6 +212,8 @@ function mediaFactory(media) {
     />`;
   }
 }
+
+//Lightbox Features
 
 function openMedia(mediaIndex) {
   lightboxMediaIndex = mediaIndex;
@@ -253,24 +256,25 @@ function closeLightbox() {
   lightbox.style.display = "none";
 }
 
+//Modal Features
+
 // open Modal
 
 function openModal() {
   modal.style.display = "block";
-  test.style.display = "block";
+  modalContainer.style.display = "block";
 }
 
 // close Modal
 
 function closeModal() {
   modal.style.display = "none";
-  test.style.display = "none";
+  modalContainer.style.display = "none";
 }
 
 cross.addEventListener("click", closeModal);
-//*********************************************************************************************************
+
 // Search Value enter by User
-//*********************************************************************************************************
 
 inputs.forEach((input) => {
   input.addEventListener("change", (e) => {
@@ -293,9 +297,8 @@ inputs.forEach((input) => {
   });
 });
 
-//*********************************************************************************************************
 // Function Arrow Checker (Verification of Validate Data)
-//*********************************************************************************************************
+
 // First Name Section
 const firstNameChecker = (value) => {
   if (value.length < 2 || value.length === 0) {
@@ -347,9 +350,7 @@ const textAreaChecker = (value) => {
   }
 };
 
-//*********************************************************************************************************
 // Submit Section
-//*********************************************************************************************************
 
 // Form Validation
 modal.addEventListener("submit", (e) => {
@@ -372,6 +373,7 @@ modal.addEventListener("submit", (e) => {
   }
 });
 
+// Add Name Photographer in modal
 const modalPresentation = document.querySelector(".modal__presentation");
 
 function addNameModal(photographer) {

@@ -79,6 +79,13 @@ function filterByTag(tagName) {
     });
 }
 
-window.addEventListener("scroll", () => {
+function scrollOn() {
   headerLink.style.display = "block";
-});
+}
+function scrollOff() {
+  headerLink.style.display = "none";
+}
+
+if (window.pageYOffset > 100) {
+  document.addEventListener("scroll", scrollOn());
+}

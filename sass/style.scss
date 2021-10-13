@@ -52,19 +52,6 @@ body {
   padding: 0;
 }
 
-.test {
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
 .header {
   display: flex;
   flex-wrap: wrap;
@@ -135,8 +122,6 @@ body {
   overflow: hidden;
   object-fit: cover;
   width: 100%;
-  max-height: auto;
-
   &__image {
     width: 12.5rem;
     height: 12.5rem;
@@ -151,9 +136,6 @@ body {
     color: $color-secondary;
     font-size: 3rem;
     margin-bottom: 0;
-  }
-  &:hover {
-    transform: scale(1.1);
   }
 }
 
@@ -293,6 +275,8 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: cover;
+    object-position: 50% 35%;
   }
   &__video {
     width: 100%;
@@ -365,7 +349,7 @@ body {
   display: none;
   flex-direction: column;
   width: 40%;
-  height: 95%;
+  height: 97%;
   margin: 1rem auto;
   background-color: $color-orangeSalmon;
   border-radius: 5px;
@@ -373,13 +357,14 @@ body {
 
   &__presentation {
     margin: 1rem;
+    word-wrap: break-word;
     font-weight: 700;
     font-size: xx-large;
   }
   &__cross {
     position: absolute;
-    top: 1.7rem;
-    right: 1.2rem;
+    top: 0.5rem;
+    right: 0.5rem;
     color: white;
   }
   &__block {
@@ -396,6 +381,19 @@ body {
     background-color: $color-primary;
     color: white;
   }
+}
+
+#modalContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #textArea {
@@ -420,11 +418,72 @@ textarea {
 }
 
 #lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+  background: white;
+  z-index: 999;
 }
 
+.lightbox {
+  &__container {
+    position: absolute;
+    top: 2rem;
+    bottom: 3rem;
+    left: 20rem;
+    right: 20rem;
+  }
+  &__close {
+    position: absolute;
+    top: 2rem;
+    right: 17rem;
+    z-index: 2001;
+    opacity: 0.5;
+    font-size: medium;
+    color: $color-primary;
+    background-color: white;
+    border: none;
+    outline: none;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__prev {
+    position: absolute;
+    top: 0;
+    left: 17rem;
+    height: 100%;
+    z-index: 2000;
+    opacity: 0.5;
+    color: $color-primary;
+    background-color: white;
+    border: none;
+    outline: none;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__next {
+    position: absolute;
+    top: 0;
+    right: 17rem;
+    height: 100%;
+    z-index: 2000;
+    opacity: 0.5;
+    color: $color-primary;
+    background-color: white;
+    border: none;
+    outline: none;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
 @media only screen and (max-width: 1215px) {
   .filters {
     &__profile {
@@ -486,6 +545,10 @@ textarea {
     }
   }
 
+  .filterNav {
+    display: none;
+  }
+
   .header {
     &__title {
       position: absolute;
@@ -517,13 +580,14 @@ textarea {
   }
   .presentation {
     display: inline-block;
+    width: 100%;
     margin: 1rem 0 0 0.9rem;
-    min-height: 10rem;
+    min-height: 8rem;
     background-color: white;
     &__image {
       position: absolute;
-      top: 4rem;
-      right: 0;
+      top: 5rem;
+      right: -1rem;
       width: 6rem;
       height: 6rem;
       margin: 1rem;
@@ -564,8 +628,9 @@ textarea {
   }
 
   .photo {
-    width: auto;
+    width: 100%;
     height: auto;
+    margin: 0.8rem;
     &__video {
       min-width: 20rem;
       height: 15rem;
@@ -599,12 +664,9 @@ textarea {
 }
 
 @media only screen and (max-width: 321px) {
-  /*  * {
-    border: 1px solid black;
-  } */
-
-  .filterNav {
-    margin: 1rem;
+  .header__title {
+    top: 2.5rem;
+    left: 0rem;
   }
 
   #gallery {
@@ -616,17 +678,18 @@ textarea {
     width: 100%;
     margin: 0;
     &__video {
-      width: 50px;
-      height: 200px;
+      margin: 0.1rem 1rem;
     }
     &__image {
-      width: 100px;
-      height: 200px;
+      margin: 0.1rem 1rem;
     }
   }
 
-  .filters__profile {
-    margin-top: 6rem;
+  .filters {
+    &__profile {
+      margin: 0.2rem 0.5rem 0 0;
+      padding: 0.1rem;
+    }
   }
 
   .presentation {
@@ -634,7 +697,14 @@ textarea {
     &__image {
       width: 4rem;
       height: 4rem;
-      top: 7rem;
+      top: 4.8rem;
+      right: -2rem;
+    }
+    &__filters {
+      display: flex;
+      justify-content: flex-start;
+      align-content: space-around;
+      margin: 1rem auto;
     }
   }
 }

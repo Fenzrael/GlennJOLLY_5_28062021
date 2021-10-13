@@ -34,25 +34,25 @@
         </select>
       </section>
       <section id="gallery"></section>
-      <section id="lightbox">
-        <div class="lightbox">
-          <button class="lightbox__close" aria-label="lightbox close" onclick="closeLightbox()">
-            <span class="fas fa-times"></span>
-          </button>
-          <button class="lightbox__prev" aria-label="lightbox previously" onclick="previous()">
-            <span class="fas fa-chevron-left"></span>
-          </button>
-          <button class="lightbox__next" aria-label="lightbox next" onclick="next()">
-            <span class="fas fa-chevron-right"></span>
-          </button>
-          <div
-            id="lightbox__container"
-            aria-label="lightbox container"
-          ></div>
+      <section id="lightbox" class="lightbox">
+        <div id="lightbox__container" class="lightbox__container" 
+             aria-label="lightbox container">
         </div>
+        <button class="lightbox__close" aria-label="lightbox close" 
+                onclick="closeLightbox()">
+          <span class="fas fa-times fa-2x"></span>
+        </button>
+        <button class="lightbox__prev" aria-label="lightbox previously" 
+                onclick="previous()">
+          <span class="fas fa-chevron-left fa-2x"></span>
+        </button>
+        <button class="lightbox__next" aria-label="lightbox next" 
+                onclick="next()">
+          <span class="fas fa-chevron-right fa-2x"></span>
+        </button>
       </section>
       <section id="boxHeart"></section>
-      <div class="test">
+      <section id="modalContainer">
         <form class="modal" role="dialog">
           <p class="modal__presentation">Contactez Moi</p>
           <span
@@ -83,7 +83,7 @@
             Envoyer
           </button>
         </form>
-      </div>
+      </section>
     </main>
     <script type="text/javascript" src="./pro.js"></script>
   </body>
