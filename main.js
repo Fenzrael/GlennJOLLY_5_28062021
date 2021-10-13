@@ -89,3 +89,4 @@ function scrollOff() {
 if (window.pageYOffset > 100) {
   document.addEventListener("scroll", scrollOn());
 }
+console.log(headerLink);

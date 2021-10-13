@@ -432,16 +432,17 @@ textarea {
 
 .lightbox {
   &__container {
-    position: absolute;
-    top: 2rem;
-    bottom: 3rem;
-    left: 20rem;
-    right: 20rem;
+    margin: 2rem 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    margin-bottom: 1%;
   }
   &__close {
     position: absolute;
-    top: 2rem;
-    right: 17rem;
+    top: 1.8rem;
+    right: 12rem;
     z-index: 2001;
     opacity: 0.5;
     font-size: medium;
@@ -456,7 +457,7 @@ textarea {
   &__prev {
     position: absolute;
     top: 0;
-    left: 17rem;
+    left: 12rem;
     height: 100%;
     z-index: 2000;
     opacity: 0.5;
@@ -471,7 +472,7 @@ textarea {
   &__next {
     position: absolute;
     top: 0;
-    right: 17rem;
+    right: 12rem;
     height: 100%;
     z-index: 2000;
     opacity: 0.5;
@@ -484,6 +485,7 @@ textarea {
     }
   }
 }
+
 @media only screen and (max-width: 1215px) {
   .filters {
     &__profile {
@@ -542,6 +544,7 @@ textarea {
     &__profile {
       flex-direction: column;
       width: 100%;
+      margin: 0.8rem auto;
     }
   }
 
@@ -549,6 +552,9 @@ textarea {
     display: none;
   }
 
+  .link__title {
+    margin: 0.8rem auto;
+  }
   .header {
     &__title {
       position: absolute;
