@@ -31,6 +31,7 @@ const errorMessage = document.querySelectorAll(".errorMessage");
 
 const lightbox = document.getElementById("lightbox");
 const lightboxContainer = document.getElementById("lightbox__container");
+const photoName = document.getElementById("lightbox__name");
 
 let lightboxMediaIndex = 0;
 
@@ -195,7 +196,8 @@ function constructBoxTotalHeart(photographer, totalHeart) {
 // Factory Function (video or image)
 function mediaFactory(media) {
   if (media.video) {
-    return `<video controls width="310" class="photo__video">
+    return `<video controls width="310" class="photo__video" 
+    aria-label="Lilac Breasted Roller, CloseUp View">
     <source src="./img/${media.video}"
             type="video/mp4">
             role="application"
@@ -208,7 +210,8 @@ function mediaFactory(media) {
     src="./img/${media.image}" 
     alt=""
     tabindex="0"
-    onClick="openMedia(${findMediaIndex(media.id)})" 
+    onClick="openMedia(${findMediaIndex(media.id)})"
+    aria-label="Lilac Breasted Roller, CloseUp View" 
     />`;
   }
 }
@@ -218,9 +221,10 @@ function mediaFactory(media) {
 function openMedia(mediaIndex) {
   lightboxMediaIndex = mediaIndex;
   const media = currentUserMedia[mediaIndex];
-  console.log(media);
+
   lightbox.style.display = "block";
   lightboxContainer.innerHTML = mediaFactory(media);
+  photoName.innerHTML = `${media.title}`;
 }
 
 function findMediaIndex(mediaId) {

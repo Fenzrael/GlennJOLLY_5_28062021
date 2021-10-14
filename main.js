@@ -79,14 +79,19 @@ function filterByTag(tagName) {
     });
 }
 
-function scrollOn() {
-  headerLink.style.display = "block";
-}
-function scrollOff() {
-  headerLink.style.display = "none";
-}
+// Header__link (return to the Main) appear
 
-if (window.pageYOffset > 100) {
-  document.addEventListener("scroll", scrollOn());
-}
-console.log(headerLink);
+window.addEventListener("scroll", function () {
+  let scrollValue =
+    (window.innerHeight + window.scrollY) / document.body.offsetHeight;
+
+  if (scrollValue > 0.7) {
+    headerLink.style.display = "block";
+  } else {
+    headerLink.style.display = "none";
+  }
+});
+
+// Accessibility
+
+// Filters
