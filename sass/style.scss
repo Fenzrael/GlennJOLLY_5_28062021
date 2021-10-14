@@ -441,7 +441,13 @@ textarea {
     align-items: center;
     justify-content: center;
     height: 90%;
-    margin-bottom: 1%;
+  }
+  &__name {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 15rem;
+    color: $color-primary;
+    font-weight: bold;
   }
   &__close {
     position: fixed;
@@ -498,7 +504,15 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1025px) {
+  .header {
+    &__title {
+      margin: 1.5rem 0 0 0.9rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 769px) {
   .header {
     &__navigation {
       margin-left: 0.5rem;
@@ -544,11 +558,14 @@ textarea {
 
   .lightbox {
     &__container {
-      margin: 2rem 10rem;
+      margin: 1rem 10rem;
+    }
+    &__name {
+      left: 10rem;
     }
     &__close {
       position: fixed;
-      top: 1.8rem;
+      top: 0.8rem;
       right: 7rem;
     }
     &__prev {
@@ -563,7 +580,7 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 426px) {
   .photograph {
     &__profile {
       flex-direction: column;
@@ -696,6 +713,10 @@ textarea {
     &__container {
       margin: 1rem 8rem;
     }
+    &__name {
+      bottom: 8rem;
+      left: 3.7rem;
+    }
     &__close {
       position: fixed;
       top: 8rem;
@@ -709,6 +730,27 @@ textarea {
     &__next {
       top: 0;
       right: 1.5rem;
+    }
+  }
+}
+@media only screen and (max-width: 376px) {
+  .presentation__image {
+    top: 4rem;
+  }
+  .lightbox {
+    &__name {
+      bottom: 8rem;
+      left: 2.1rem;
+    }
+    &__close {
+      right: 0rem;
+      top: 6rem;
+    }
+    &__prev {
+      left: 0rem;
+    }
+    &__next {
+      right: 0rem;
     }
   }
 }
@@ -762,18 +804,19 @@ textarea {
     &__container {
       margin: 2rem;
     }
+    &__name {
+      left: 1rem;
+    }
     &__close {
-      position: fixed;
       top: 2rem;
       right: 1rem;
     }
     &__prev {
-      position: fixed;
-      top: 0;
       left: 0.6rem;
+      background-color: rgba(0, 0, 0, 0);
     }
     &__next {
-      top: 0;
+      background-color: rgba(0, 0, 0, 0);
       right: 0.6rem;
     }
   }

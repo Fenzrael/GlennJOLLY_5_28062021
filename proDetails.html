@@ -34,19 +34,21 @@
         </select>
       </section>
       <section id="gallery"></section>
-      <section id="lightbox" class="lightbox">
+      <section id="lightbox" class="lightbox" aria-label="Image CloseUp View">
         <div id="lightbox__container" class="lightbox__container" 
-             aria-label="lightbox container">
+             aria-label="Lilac Breasted Roller">
         </div>
-        <button class="lightbox__close" aria-label="lightbox close" 
+        <div id="lightbox__name" class="lightbox__name" 
+        aria-label="Photo Name"></div>
+        <button class="lightbox__close" aria-label="Close Dialog" 
                 onclick="closeLightbox()">
           <span class="fas fa-times fa-2x"></span>
         </button>
-        <button class="lightbox__prev" aria-label="lightbox previously" 
+        <button class="lightbox__prev" aria-label="Previous Image" 
                 onclick="previous()">
           <span class="fas fa-chevron-left fa-2x"></span>
         </button>
-        <button class="lightbox__next" aria-label="lightbox next" 
+        <button class="lightbox__next" aria-label="Next Image" 
                 onclick="next()">
           <span class="fas fa-chevron-right fa-2x"></span>
         </button>
