@@ -274,6 +274,14 @@ function closeModal() {
 
 cross.addEventListener("click", closeModal);
 
+const modalPresentation = document.querySelector(".modal__presentation");
+
+// Add Name Photographer in modal
+
+function addNameModal(photographer) {
+  modalPresentation.textContent += ` ${photographer.name}`;
+}
+
 // Search Value enter by User
 
 inputs.forEach((input) => {
@@ -372,10 +380,3 @@ modal.addEventListener("submit", (e) => {
     return true;
   }
 });
-
-// Add Name Photographer in modal
-const modalPresentation = document.querySelector(".modal__presentation");
-
-function addNameModal(photographer) {
-  modalPresentation.textContent += ` ${photographer.name}`;
-}
