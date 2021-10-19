@@ -96,10 +96,10 @@ window.addEventListener("scroll", function () {
 
 // Filters
 
-document.addEventListener("keyup", (event) => {
+document.addEventListener("keydown", (event) => {
   const touchName = event.key;
   console.log(touchName);
 
-  if (touchName === "Enter") {
+  if (touchName === "ArrowRight") {
   }
 });

@@ -386,9 +386,6 @@ modal.addEventListener("submit", (e) => {
   }
 });
 
-// Accessibility
-
-// Lightbox
 document.addEventListener("keyup", (event) => {
   const touchName = event.key;
   console.log(touchName);

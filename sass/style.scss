@@ -41,6 +41,7 @@ $color-orangeSalmon: #db8876;
 }
 
 * {
+  /* border: 1px solid black; */
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
@@ -50,6 +51,7 @@ $color-orangeSalmon: #db8876;
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .header {
@@ -108,7 +110,8 @@ body {
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #901c1c;
       color: white;
     }
@@ -175,7 +178,8 @@ body {
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: #901c1c;
       color: white;
     }
@@ -199,7 +203,8 @@ body {
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
     object-fit: cover;
     overflow: hidden;
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.1);
     }
   }
@@ -239,7 +244,8 @@ body {
     color: white;
     cursor: pointer;
     outline: none;
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: $color-secondary;
       transform: scale(0.98);
     }
@@ -458,7 +464,8 @@ textarea {
     background-color: white;
     border: none;
     outline: none;
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }
@@ -473,7 +480,8 @@ textarea {
     background-color: white;
     border: none;
     outline: none;
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }
@@ -488,7 +496,8 @@ textarea {
     background-color: white;
     border: none;
     outline: none;
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }
@@ -532,7 +541,7 @@ textarea {
       margin: 0 0 0 3rem;
     }
     &__description {
-      margin: 0 0 0 3rem;
+      margin: 1.5rem 0 0 3rem;
     }
     &__filters {
       margin-bottom: 2rem;
@@ -623,16 +632,17 @@ textarea {
     text-align: center;
     margin: 0.2rem 0.5rem 0 0;
   }
+
   .presentation {
     display: inline-block;
-    width: 100%;
+    width: auto;
     margin: 1rem 0 0 0.9rem;
     min-height: 8rem;
     background-color: white;
     &__image {
       position: absolute;
-      top: 5rem;
-      right: -1rem;
+      top: 4rem;
+      right: 0rem;
       width: 6rem;
       height: 6rem;
       margin: 1rem;
@@ -664,8 +674,9 @@ textarea {
   }
 
   #gallery {
-    display: inline-block;
-    margin: auto;
+    display: block;
+    margin: 1rem 0;
+    padding: 0;
   }
 
   #boxHeart {
@@ -673,22 +684,23 @@ textarea {
   }
 
   .photo {
-    width: 100%;
+    width: auto;
     height: auto;
     margin: 0.8rem;
     &__video {
-      min-width: 20rem;
       height: 15rem;
-      max-width: 100%;
     }
     &__image {
-      min-width: 20rem;
+      margin: 0.1rem 0;
       height: 15rem;
-      max-width: 100%;
       object-fit: cover;
       object-position: 50% 20%;
       overflow: hidden;
     }
+  }
+
+  .legend {
+    width: 100%;
   }
 
   .modal {
@@ -775,6 +787,10 @@ textarea {
     }
   }
 
+  .legend {
+    margin: 0.2rem 0 0.2rem 1rem;
+  }
+
   .filters {
     &__profile {
       margin: 0.2rem 0.5rem 0 0;
@@ -795,6 +811,7 @@ textarea {
       justify-content: flex-start;
       align-content: space-around;
       margin: 1rem auto;
+      min-height: 4rem;
     }
   }
 
