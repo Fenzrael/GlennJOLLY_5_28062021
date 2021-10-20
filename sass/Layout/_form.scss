@@ -1,0 +1,82 @@
+//-----------------------------
+// Contact photographer Modal-
+//---------------------------
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  width: 40%;
+  height: 97%;
+  margin: 1rem auto;
+  background-color: $color-orangeSalmon;
+  border-radius: 5px;
+  font-size: 1.5rem;
+
+  &__presentation {
+    margin: 1rem;
+    word-wrap: break-word;
+    font-weight: 700;
+    font-size: xx-large;
+  }
+  &__cross {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: white;
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    margin: 1rem;
+  }
+  &__submit {
+    width: 10rem;
+    height: 4rem;
+    margin: 0 0 1rem 1rem;
+    border-radius: 5px;
+    background-color: $color-primary;
+    color: white;
+  }
+}
+
+#modalContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+// Input
+
+#textArea {
+  height: 5rem;
+}
+
+input,
+textarea {
+  border-radius: 5px;
+}
+
+// class error
+
+.error {
+  border: 2px solid red;
+}
+
+.errorMessage {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: purple;
+  display: none;
+}

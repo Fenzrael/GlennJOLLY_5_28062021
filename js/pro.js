@@ -1,12 +1,14 @@
+//------------------------------
 // Javascript Photographer Page
+//------------------------------
 
 // Variables
+//----------
+
 const body = document.querySelector("body");
 const params = new URLSearchParams(document.location.search.substring(1));
 
 const photographerId = params.get("photographerId");
-
-const modalContainer = document.getElementById("modalContainer");
 
 const likeButton = document.getElementsByClassName("legend__icon");
 const likeCount = document.getElementsByClassName("legend__likes");
@@ -14,6 +16,8 @@ const likeCount = document.getElementsByClassName("legend__likes");
 const gallery = document.getElementById("gallery");
 const presentationPhotographer = document.getElementById("presentation");
 
+const modalButton = document.querySelector(".modal__presentation");
+const modalContainer = document.getElementById("modalContainer");
 const modal = document.querySelector(".modal");
 const cross = document.querySelector(".modal__cross");
 
@@ -35,6 +39,9 @@ const lightboxContainer = document.getElementById("lightbox__container");
 const photoName = document.getElementById("lightbox__name");
 
 let lightboxMediaIndex = 0;
+
+// Import all Datas
+//------------------
 
 // Import Photographers media
 const currentUserMedia = [];
@@ -195,6 +202,8 @@ function constructBoxTotalHeart(photographer, totalHeart) {
 }
 
 // Factory Function (video or image)
+//----------------------------------
+
 function mediaFactory(media) {
   if (media.video) {
     return `<video controls width="310" class="photo__video" 
@@ -210,7 +219,7 @@ function mediaFactory(media) {
     class="photo__image"
     src="./img/${media.image}" 
     alt=""
-    tabindex="0"
+    tabindex="10"
     onClick="openMedia(${findMediaIndex(media.id)})"
     aria-label="Lilac Breasted Roller, CloseUp View" 
     />`;
@@ -218,6 +227,7 @@ function mediaFactory(media) {
 }
 
 //Lightbox Features
+//-----------------
 
 function openMedia(mediaIndex) {
   lightboxMediaIndex = mediaIndex;
@@ -262,6 +272,7 @@ function closeLightbox() {
 }
 
 //Modal Features
+//--------------
 
 // open Modal
 
@@ -288,6 +299,7 @@ function addNameModal(photographer) {
 }
 
 // Search Value enter by User
+//---------------------------
 
 inputs.forEach((input) => {
   input.addEventListener("change", (e) => {
@@ -311,6 +323,7 @@ inputs.forEach((input) => {
 });
 
 // Function Arrow Checker (Verification of Validate Data)
+//-------------------------------------------------------
 
 // First Name Section
 const firstNameChecker = (value) => {
@@ -364,6 +377,7 @@ const textAreaChecker = (value) => {
 };
 
 // Submit Section
+//---------------
 
 // Form Validation
 modal.addEventListener("submit", (e) => {
@@ -386,9 +400,11 @@ modal.addEventListener("submit", (e) => {
   }
 });
 
+// Event KeyBoard Lightbox
+//------------------------
+
 document.addEventListener("keyup", (event) => {
   const touchName = event.key;
-  console.log(touchName);
 
   if (touchName === "ArrowRight" && lightbox.style.display == "block") {
     next(event);

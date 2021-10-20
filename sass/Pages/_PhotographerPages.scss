@@ -1,0 +1,173 @@
+//-----------------
+//-HomePage Style-
+//---------------
+
+//------------------------------------
+//-Section Presentation Photographer-
+//----------------------------------
+
+.presentation {
+  display: grid;
+  background-color: $color-greyLight;
+  min-height: 20rem;
+  margin: 1rem 3rem;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  &__image {
+    grid-row: 1/4;
+    grid-column: 4/4;
+    margin: 3rem 1rem;
+    width: 12.5rem;
+    height: 12.5rem;
+    border-radius: 50%/50%;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
+    object-fit: cover;
+    overflow: hidden;
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+    }
+  }
+  &__pro {
+    grid-row: 1;
+    grid-column: 1/2;
+    color: $color-secondary;
+    font-size: 3rem;
+    margin: 3rem 0 0 3rem;
+  }
+  &__city {
+    grid-row: 2/2;
+    grid-column: 1/1;
+    margin: 0 0 0 3rem;
+    color: $color-primary;
+  }
+  &__description {
+    margin: 2rem 0 0 3rem;
+    grid-row: 2/2;
+    grid-column: 1/3;
+    color: $color-greyDark;
+  }
+  &__filters {
+    display: block;
+    margin: 5rem 0 0 2.8rem;
+    grid-row: 2/2;
+    grid-column: 1/3;
+  }
+  &__contact {
+    grid-row: 1/1;
+    grid-column: 2/3;
+    margin-top: 3rem;
+    width: 8rem;
+    height: 4rem;
+    background-color: $color-primary;
+    border-radius: 10%/20%;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    &:hover,
+    &:focus {
+      background-color: $color-secondary;
+      transform: scale(0.98);
+    }
+  }
+}
+
+//-------------
+//-Sort Style-
+//-----------
+
+.filterNav {
+  margin: 0 3rem;
+}
+
+.label {
+  padding-right: 2rem;
+}
+
+#filter {
+  padding: 0.8rem;
+  border-radius: 5px;
+  background-color: $color-primary;
+  color: white;
+}
+
+//------------------
+//-Image and Video-
+//----------------
+
+// Container Photo and Video
+#gallery {
+  display: grid;
+  width: 100%;
+  grid-gap: 0.3rem;
+  margin: 1rem 0 0.5rem 1.6rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  row-gap: 1.5rem;
+}
+
+.photo {
+  width: 19rem;
+  height: 19rem;
+  object-fit: cover;
+  &__image {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+  &__video {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: fill;
+  }
+}
+
+#pro {
+  margin: 1rem 0 0 3rem;
+}
+
+// Legend Figure
+.legend {
+  position: relative;
+  margin-top: 0.2rem;
+
+  &__likes {
+    position: absolute;
+    bottom: 0;
+    right: 1.5rem;
+  }
+  &__icon {
+    position: absolute;
+    bottom: 0.15rem;
+    right: 0;
+  }
+}
+
+// Box Float (Number of Likes and Price per day)
+#boxHeart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  right: 2rem;
+  bottom: 0;
+  width: 17rem;
+  height: 3rem;
+  background-color: rgba(219, 136, 118, 0.9);
+  border: 1px solid $color-orangeSalmon;
+  border-radius: 0.32rem;
+}
+
+.icon {
+  margin-left: 1rem;
+}
+
+.price {
+  margin-right: 1rem;
+}
+
+.legend {
+  color: $color-primary;
+}

@@ -57,7 +57,7 @@ function constructFilterTags(tags) {
   for (let i = 0; i < tags.length; i++) {
     let tag = tags[i];
     filterTags += ` 
-      <span class="filters__profile" onclick="filterByTag('${tag}')" tabindex="0">#${tag}</span>
+      <a class="filters__profile" onKeyUp="filterByTagKeyUp(event,'${tag}')" onclick="filterByTag('${tag}')" tabindex="0">#${tag}</a>
     `;
   }
   return filterTags;
@@ -79,6 +79,12 @@ function filterByTag(tagName) {
     });
 }
 
+function filterByTagKeyUp(event, tagName) {
+  if (event.keyCode === 13 || event.keyCode === 32) {
+    filterByTag(tagName);
+  }
+}
+
 // Header__link (return to the Main) appear
 
 window.addEventListener("scroll", function () {
@@ -89,17 +95,5 @@ window.addEventListener("scroll", function () {
     headerLink.style.display = "block";
   } else {
     headerLink.style.display = "none";
-  }
-});
-
-// Accessibility
-
-// Filters
-
-document.addEventListener("keydown", (event) => {
-  const touchName = event.key;
-  console.log(touchName);
-
-  if (touchName === "ArrowRight") {
   }
 });

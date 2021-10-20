@@ -1,0 +1,82 @@
+//----------
+//Lightbox-
+//--------
+
+#lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.lightbox {
+  &__container {
+    margin: 2rem 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+  }
+  &__name {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 15rem;
+    color: $color-primary;
+    font-weight: bold;
+  }
+  &__close {
+    position: fixed;
+    top: 1.8rem;
+    right: 12rem;
+    z-index: 2001;
+    opacity: 0.5;
+    font-size: medium;
+    color: $color-primary;
+    background-color: white;
+    border: none;
+    outline: none;
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+  &__prev {
+    position: fixed;
+    top: 0.26rem;
+    left: 12rem;
+    height: 100%;
+    z-index: 2000;
+    opacity: 0.5;
+    color: $color-primary;
+    background-color: white;
+    border: none;
+    outline: none;
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+  &__next {
+    position: fixed;
+    top: 0;
+    right: 12rem;
+    height: 100%;
+    z-index: 2000;
+    opacity: 0.5;
+    color: $color-primary;
+    background-color: white;
+    border: none;
+    outline: none;
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
