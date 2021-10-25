@@ -219,7 +219,7 @@ function mediaFactory(media) {
     class="photo__image"
     src="./img/${media.image}" 
     alt=""
-    tabindex="10"
+    tabindex="0"
     onClick="openMedia(${findMediaIndex(media.id)})"
     aria-label="Lilac Breasted Roller, CloseUp View" 
     />`;
