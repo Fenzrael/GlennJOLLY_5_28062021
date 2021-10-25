@@ -12,12 +12,11 @@
   &__filters {
     display: flex;
     justify-content: space-between;
-    align-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
     text-align: center;
     margin: 0.1rem 0.3rem;
-    padding: 0 0.2rem;
-    height: 1.7rem;
+    padding: 0.2rem 0.5rem;
     border: 1px solid #c4c4c4;
     border-radius: 2rem;
     color: $color-primary;
